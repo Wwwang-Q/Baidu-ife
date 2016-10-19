@@ -1,0 +1,98 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+  </head>
+<body>
+
+  <ul id="source">
+    <li>北京空气质量：<b>90</b></li>
+    <li>上海空气质量：<b>70</b></li>
+    <li>天津空气质量：<b>80</b></li>
+    <li>广州空气质量：<b>50</b></li>
+    <li>深圳空气质量：<b>40</b></li>
+    <li>福州空气质量：<b>32</b></li>
+    <li>成都空气质量：<b>90</b></li>
+  </ul>
+
+  <ul id="resort">
+    <!-- 
+    <li>第一名：北京空气质量：<b>90</b></li>
+    <li>第二名：北京空气质量：<b>90</b></li>
+    <li>第三名：北京空气质量：<b>90</b></li>
+     -->
+
+  </ul>
+
+  <button id="sort-btn">排序</button>
+
+<script type="text/javascript">
+
+var Number=["一","二","三","四","五","六","七","八","九"];
+
+function getData() {	
+  var list=document.getElementById("source").getElementsByTagName("li");
+  var data=new Array();  
+for(var i=0;i<list.length;i++){
+	var arr=list[i].innerText.split("空气质量：")[0];
+	var num=list[i].innerText.split("空气质量：")[1];
+	data[i]=[];                                                   //注意二维数组的push
+	data[i].push(arr);
+	data[i].push(num);
+}
+  return data;
+}
+
+/**
+ * sortAqiData
+ * 按空气质量对data进行从小到大的排序
+ * 返回一个排序后的数组
+ */
+function sortAqiData(data) {
+   function sortNum(a,b){
+   	return a[1]-b[1];
+   }
+   data.sort(sortNum);
+   return data;
+}
+
+/**
+ * render
+ * 将排好序的城市及空气质量指数，输出显示到id位resort的列表中
+ * 格式见ul中的注释的部分
+ */
+function render(data) {
+	for(var j=0;j<data.length;j++){
+//		var r=document.getElementById("resort");
+//		var txt=r.innerHTML;
+// txt+="<li>第"+Number[j]+"名："+data[j][0]+"空气质量：<b>"+data[j][1]+"<b><li>";
+// r.innerHTML=txt;
+var li=document.createElement("li");
+li.innerHTML="第"+Number[j]+"名："+data[j][0]+"空气质量：<b>"+data[j][1]+"<b>";
+var r=document.getElementById("resort");
+r.appendChild(li);
+	}
+   
+}
+
+function btnHandle() {
+  var aqiData = getData();
+  aqiData = sortAqiData(aqiData);
+render(aqiData);
+var btn=document.getElementById('sort-btn');
+btn.disabled=true;
+}
+
+
+function init() {
+document.getElementById("sort-btn").onclick=btnHandle;
+  // 在这下面给sort-btn绑定一个点击事件，点击时触发btnHandle函数
+
+}
+
+init();
+
+</script>
+</body>
+</html>

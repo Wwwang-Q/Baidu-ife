@@ -1,0 +1,25 @@
+img{
+	width: 100px;
+	height: 100px;
+	float:left;
+}
+.left{
+	width: 150px;
+	border:1px solid #000000;
+	overflow: hidden;
+	position:absolute;
+}
+.right{
+	width: 150px;
+	border:1px solid #000000;
+	overflow: hidden;
+	position:fixed;
+}
+.center{
+	overflow: hidden;
+	width: 500px;
+	margin-left: 200px;
+}
+.container{
+	float: left;
+}

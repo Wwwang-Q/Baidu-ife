@@ -1,0 +1,27 @@
+.box{	
+	display: inline-block;
+/*	bottom: 0;*/
+	cursor: pointer;
+	animation: grow 5s ease-in-out;
+}
+.aqi-chart-wrap{
+	margin:80px;
+	position: relative;
+	height: 600px;
+	width: 100%;	
+	overflow: hidden;
+	text-align: center;
+}
+.day{
+	width: 1%;
+}
+.week{
+	width: 6%;
+}
+.month{
+	width: 16%;
+}
+@keyframes grow{
+	from{bottom: -300px;}
+	to{bottom: 0;}
+}

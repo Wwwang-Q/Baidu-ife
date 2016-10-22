@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>task19</title>		
+	<style type="text/css">
+		.container{
+			margin: 50px;
+		}
+		.box{
+			width: 20px;
+			margin: 2px;
+			background: #2889CF;
+			display: inline-block;
+			float: left;
+		}
+		.btn{
+			width: 90px;
+			height: 40px;
+			border-radius: 10px;
+			background: #4C9ED9;
+			color: white;
+			font-size: 15px;
+		}
+		.container1{
+			margin: 30px;
+		}
+		#number{
+			height: 30px;
+			border-radius: 10px;
+		}
+	</style>
+	</head>	
+	
+	<body>
+		<div class="container">
+			<input type="text" name="number" id="number" value="" />
+			 <button class="btn" id="left-in">左侧入</button>
+			 <button class="btn" id="right-in">右侧入</button>
+			 <button class="btn" id="left-out">左侧出</button>
+			 <button class="btn" id="right-out">右侧出</button>
+			 <button class="btn" id="radom">听天由命</button>
+			 <button class="btn" id="sort">排序</button>
+			 <div class="container1">			 	
+			 	
+			 </div>
+		</div>
+		
+		
+		<script type="text/javascript">
+		
+		var m=document.getElementsByClassName('container1')[0];
+		var count=0;
+		
+	       document.getElementById('left-in').addEventListener('click',function(){
+	       	if(count<60){
+	       		var v=document.getElementById('number').value;
+	       	var txt="";
+	       	txt+='<div class="box" style="height:'+ v+'px;"></div>';
+	       	var content=m.innerHTML; 
+	       	m.innerHTML=txt+content;
+	       	count++;
+	       	}
+	       	else{
+	       		alert("输入的数据个数已超过60！");
+	       	}
+	       })
+	       document.getElementById('right-in').addEventListener('click',function(){
+	       	if(count<60){
+	       	  var v=document.getElementById('number').value;
+	       	  var txt="";
+	       	  txt+='<div class="box" style="height:'+ v+'px;"></div>';
+	       	  var content=m.innerHTML; 
+	       	  m.innerHTML=content+txt;
+	       	  count++;
+	       	}
+	       	else{
+	       		alert("输入的数据个数已超过60！");
+	       	}
+	       })
+	       document.getElementById('left-out').addEventListener('click',function(){
+	       	m.removeChild(m.firstChild);   
+	       	count--;
+	       })
+	       document.getElementById('right-out').addEventListener('click',function(){
+	       	m.removeChild(m.lastChild);   
+	       	count--;
+	       })
+	       m.addEventListener('click',function(event){
+	       	m.removeChild(event.target);   
+	       	count--;
+	       })
+		</script>
+	</body>
+</html>
